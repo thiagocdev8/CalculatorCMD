@@ -122,6 +122,10 @@ namespace CalculatorCMD
                         exit = true;  // Set exit flag to true to terminate the loop
                     }
             }
+
+            Console.WriteLine("Thank you for using the Calculator 8.0 by SolarX!"); // Final message before exiting
+            Console.WriteLine("Press any key to exit..."); // Prompt to exit
+            Console.ReadKey(); // Wait for user input before closing the console
         }
 
     }
