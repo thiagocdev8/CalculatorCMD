@@ -15,6 +15,8 @@ namespace CalculatorCMD
             SquareRoot = 6,
             Exit = 7
         }
+
+        // Variable to store the result of calculations
         static void Main(string[] args)
         {
             // This is a simple calculator program that performs basic arithmetic operations.
@@ -26,7 +28,7 @@ namespace CalculatorCMD
             Console.WriteLine("Welcome to the Calculator!");
             while (!exit)
             {
-                
+                double result = 0; // Initialize result variable for each iteration
                 Console.WriteLine("Please select an operation:");
                 Console.WriteLine();
                 Console.WriteLine("1. Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Power\n6.SquareRoot\n7.Exit");
@@ -34,19 +36,37 @@ namespace CalculatorCMD
                 Menu option = (Menu)int.Parse(Console.ReadLine());
 
                 Console.WriteLine("You chose " + option);
-                Console.WriteLine("Insert the first number you want to " + option + " :");
-                double firstNumber = double.Parse(Console.ReadLine());
-                Console.WriteLine("Insert the second number you want to " + option + " :");
-                double secondNumber = double.Parse(Console.ReadLine());
 
-                if(option == Menu.Exit)
+                if (option == Menu.Power)
+                {
+                    Console.WriteLine("Insert the number you want to " + option + " :");
+                    double firstNumber = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Insert the number you want to power by:");
+                    double secondNumber = double.Parse(Console.ReadLine());
+
+                    result = Math.Pow(firstNumber, secondNumber);
+                } 
+                else if (option == Menu.SquareRoot)
+                {
+                    Console.WriteLine("Insert the number you want to " + option + " :");
+                    double firstNumber = double.Parse(Console.ReadLine());
+                    // No second number needed for square root operation
+                    if (firstNumber >= 0)
+                        result = Math.Sqrt(firstNumber);
+                    else
+                        Console.WriteLine("Error: Cannot calculate square root of a negative number.");
+                } 
+                else if(option == Menu.Exit)
                 {
                     exit = true;  // Set exit flag to true to terminate the loop
                     Console.WriteLine("Exiting the calculator. Goodbye!");
                 }
                 else
                 {
-                    double result = 0;
+                    Console.WriteLine("Insert the first number you want to " + option + " :");
+                    double firstNumber = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Insert the second number you want to " + option + " :");
+                    double secondNumber = double.Parse(Console.ReadLine());
                     switch (option)
                     {
                         case Menu.Add:
@@ -64,21 +84,15 @@ namespace CalculatorCMD
                             else
                                 Console.WriteLine("Error: Division by zero is not allowed.");
                             break;
-                        case Menu.Power:
-                            result = Math.Pow(firstNumber, secondNumber);
-                            break;
-                        case Menu.SquareRoot:
-                            if (firstNumber >= 0)
-                                result = Math.Sqrt(firstNumber);
-                            else
-                                Console.WriteLine("Error: Cannot calculate square root of a negative number.");
-                            break;
                         default:
                             Console.WriteLine("Invalid option selected.\n");
                             continue; // Skip to the next iteration of the loop
                     }
-                    Console.WriteLine($"The result of {option} is: {result}\n");
+                    
                 }
+
+                // Display the result of the operation
+                Console.WriteLine($"The result of {option} is: {result}\n");
             }
         }
 
