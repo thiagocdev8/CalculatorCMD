@@ -29,6 +29,7 @@ namespace CalculatorCMD
             while (!exit)
             {
                 double result = 0; // Initialize result variable for each iteration
+                string resultDescription = "";
                 Console.WriteLine("Please select an operation:");
                 Console.WriteLine();
                 Console.WriteLine("1. Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Power\n6.SquareRoot\n7.Exit");
@@ -45,6 +46,7 @@ namespace CalculatorCMD
                     double secondNumber = double.Parse(Console.ReadLine());
 
                     result = Math.Pow(firstNumber, secondNumber);
+                    resultDescription = $"{firstNumber} raised to the power of {secondNumber} is {result}.";
                 } 
                 else if (option == Menu.SquareRoot)
                 {
@@ -52,7 +54,10 @@ namespace CalculatorCMD
                     double firstNumber = double.Parse(Console.ReadLine());
                     // No second number needed for square root operation
                     if (firstNumber >= 0)
+                    {
                         result = Math.Sqrt(firstNumber);
+                        resultDescription = $"The square root of {firstNumber} is {result}.";
+                    }
                     else
                         Console.WriteLine("Error: Cannot calculate square root of a negative number.");
                 } 
@@ -71,18 +76,26 @@ namespace CalculatorCMD
                     {
                         case Menu.Add:
                             result = firstNumber + secondNumber;
+                            resultDescription = $"{firstNumber} + {secondNumber} = {result}.";
                             break;
                         case Menu.Subtract:
                             result = firstNumber - secondNumber;
+                            resultDescription = $"{firstNumber} - {secondNumber} = {result}.";
                             break;
                         case Menu.Multiply:
                             result = firstNumber * secondNumber;
+                            resultDescription = $"{firstNumber} x {secondNumber} = {result}.";
                             break;
                         case Menu.Divide:
                             if (secondNumber != 0)
+                            {
                                 result = firstNumber / secondNumber;
+                                resultDescription = $"{firstNumber} divided by {secondNumber} = {result}.";
+                            }
                             else
+                            {
                                 Console.WriteLine("Error: Division by zero is not allowed.");
+                            }  
                             break;
                         default:
                             Console.WriteLine("Invalid option selected.\n");
@@ -92,7 +105,8 @@ namespace CalculatorCMD
                 }
 
                 // Display the result of the operation
-                Console.WriteLine($"The result of {option} is: {result}\n");
+                    Console.WriteLine($"{resultDescription}\n");
+                
             }
         }
 
