@@ -5,7 +5,7 @@ namespace CalculatorCMD
 {
     class Program
     {
-        enum Menu
+        enum Menu // Enum to represent the menu options for the calculator
         {
             Add = 1,
             Subtract = 2,
@@ -25,7 +25,7 @@ namespace CalculatorCMD
             bool exit = false;  // Flag to control the exit of the program
 
 
-            Console.WriteLine("Welcome to the Calculator 8.0!");
+            Console.WriteLine("Welcome to the Calculator 8.0 by SolarX!");
             while (!exit)
             {
                 double result = 0; // Initialize result variable for each iteration
@@ -34,9 +34,9 @@ namespace CalculatorCMD
                 Console.WriteLine();
                 Console.WriteLine("1. Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Power\n6.SquareRoot\n7.Exit");
 
-                Menu option = (Menu)int.Parse(Console.ReadLine());
+                Menu option = (Menu)int.Parse(Console.ReadLine()); // Read user input and convert it to the Menu enum type
 
-                Console.WriteLine("You chose " + option);
+                Console.WriteLine("You chose " + option); // Display the selected operation
 
                 if (option == Menu.Power)
                 {
@@ -70,10 +70,10 @@ namespace CalculatorCMD
                 else
                 {
                     Console.WriteLine("Insert the first number you want to " + option + " :");
-                    double firstNumber = double.Parse(Console.ReadLine());
+                    double firstNumber = double.Parse(Console.ReadLine()); // Read the first number from user input
                     Console.WriteLine("Insert the second number you want to " + option + " :");
-                    double secondNumber = double.Parse(Console.ReadLine());
-                    switch (option)
+                    double secondNumber = double.Parse(Console.ReadLine()); // Read the second number from user input
+                    switch (option) // Use a switch statement to determine the operation based on user input
                     {
                         case Menu.Add:
                             result = firstNumber + secondNumber;
@@ -88,14 +88,14 @@ namespace CalculatorCMD
                             resultDescription = $"{firstNumber} x {secondNumber} = {result}.";
                             break;
                         case Menu.Divide:
-                            if (secondNumber != 0)
+                            if (secondNumber != 0) // Check for division by zero 
                             {
                                 result = firstNumber / secondNumber;
                                 resultDescription = $"{firstNumber} divided by {secondNumber} = {result}.";
                             }
                             else
                             {
-                                Console.WriteLine("Error: Division by zero is not allowed.");
+                                Console.WriteLine("Error: Division by zero is not allowed."); // Handle division by zero case
                             }  
                             break;
                         default:
