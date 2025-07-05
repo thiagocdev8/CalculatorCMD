@@ -25,7 +25,7 @@ namespace CalculatorCMD
             bool exit = false;  // Flag to control the exit of the program
 
 
-            Console.WriteLine("Welcome to the Calculator!");
+            Console.WriteLine("Welcome to the Calculator 8.0!");
             while (!exit)
             {
                 double result = 0; // Initialize result variable for each iteration
@@ -65,6 +65,7 @@ namespace CalculatorCMD
                 {
                     exit = true;  // Set exit flag to true to terminate the loop
                     Console.WriteLine("Exiting the calculator. Goodbye!");
+                    break;  // Exit the loop and program
                 }
                 else
                 {
@@ -106,7 +107,20 @@ namespace CalculatorCMD
 
                 // Display the result of the operation
                     Console.WriteLine($"{resultDescription}\n");
-                
+                // Ask if the user wants to perform another operation
+                    Console.WriteLine("Do you want to perform another operation?");
+                    Console.WriteLine("1.Yes\n2.No");
+                    int continueChoice = int.Parse(Console.ReadLine());
+                    if(continueChoice == 2)
+                    {
+                        exit = true;  // Set exit flag to true to terminate the loop
+                        Console.WriteLine("Exiting the calculator. Goodbye!");
+                    }
+                    else if(continueChoice != 1)
+                    {
+                        Console.WriteLine("Invalid choice, exiting the calculator.");
+                        exit = true;  // Set exit flag to true to terminate the loop
+                    }
             }
         }
 
