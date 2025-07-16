@@ -1,7 +1,7 @@
 # 🧮 Command-Line Calculator App
 
-Academic Project for Algoritms 2 - University class
-A simple yet powerful calculator built using C#. Run it directly in your terminal or command prompt and perform basic arithmetic operations with ease.
+- Academic Project for Algoritms 2 - University class 
+- A simple yet powerful calculator built using C#. Run it directly in your terminal or command prompt and perform basic arithmetic operations with ease.
 
 ## 🚀 Features
 
